@@ -1,0 +1,205 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{url}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{adjustbox}
+\lstset{language=C++,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\footnotesize\color{blue}\ttfamily,
+}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Pathplanning]{Lab 6} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Kasper Høj Lorenzen} % Your name
+\institute[SDU Robotics] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+University of Southern Denmark \\ % Your institution for the title page
+\medskip
+\textit{kalor@mmmi.sdu.dk} % Your email address
+}
+\date{October 13, 2022} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+% ------------------------------------------------
+\section{Pathplanning}
+% ------------------------------------------------
+
+\begin{frame}
+  \frametitle{Pathplanning}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{center}
+        \includegraphics[width=\textwidth]{./mandEx2WC}
+      \end{center}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+      \item To solve the exercise
+        \begin{itemize}
+        \item Complete \url{pathplanning.cpp}
+        \item Perform path planning and calculate statistics
+        \item Use the workcell \textit{Kr16WallWorkCell}
+        \item Run the created .rwplay file in RobWorkStudio to visualize the path
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+
+%------------------------------------------------
+\section{About the exercise}
+% ------------------------------------------------
+
+\begin{frame}
+  \frametitle{Grasping the Bottle}
+  \begin{columns}
+    \begin{column}{0.7\textwidth}
+      \begin{itemize}
+      \item Grasping the bottle in C++:
+        \begin{itemize}
+        \item See \texttt{kinematics::gripFrame()} in the API
+        \item Remember to set the \textit{state} (\texttt{rw::kinematics::state})
+        \end{itemize}
+      \item Remember
+        \begin{itemize}
+        \item The \texttt{PlannerConstraint} needs to be constructed with a state
+          \item If you change the state after you construct the \texttt{PlannerConstraint}, it needs to be reconstructed along with the \texttt{QToQPlanner}
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \begin{center}
+        \includegraphics[width=\textwidth]{./mandEx2Grasp}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Repeatability of Results}
+  \begin{itemize}
+  \item The RRT planner is probabilistic (uses a random generator)
+  \item In order to get different results each time you need to set the RNG seed with:
+    \begin{itemize}
+    \item \texttt{rw::math::Math::seed()}, uses the current date, or
+    \item \texttt{rw::math::Math::seed(int)}, uses the int as a seed
+    \end{itemize}
+  \item The seed should be set at the start of your program
+  \end{itemize}
+\end{frame}
+
+
+
+% \begin{frame}
+%\frametitle{References}
+%\footnotesize{
+%\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+%\bibitem[Ellekilde, Jorgensen, 2010]{robwork} L. P. Ellekilde and J. A. Jorgensen (2010)
+%\newblock RobWork: A Flexible Toolbox for Robotics Research and Education
+%\newblock \emph{ISR 2010 (41st International Symposium on Robotics) and ROBOTIK 2010 (6th German Conference on Robotics)}, 1 -- 7.
+%\end{thebibliography}
+%}
+%\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 

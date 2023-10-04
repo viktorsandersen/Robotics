@@ -1,0 +1,12 @@
+Wed Oct  4 11:10:19 2023
+WARNING: mju_openResource: unknown file 'Ur5_robot/scene.xml'
+
+Wed Oct  4 11:14:27 2023
+ERROR: mjv_updateSceneState: m->nu changed
+
+Wed Oct  4 15:07:40 2023
+ERROR: mjv_updateSceneState: m->nu changed
+
+Wed Oct  4 15:13:00 2023
+ERROR: mjv_updateSceneState: m->nu changed
+

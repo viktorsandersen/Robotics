@@ -1,0 +1,79 @@
+<SerialDevice name="KukaKr16">
+  <Frame name="Base" />
+
+  <Joint name="Joint1" type="Revolute">
+    <RPY> 0 0 180 </RPY>
+    <Pos> 0 0 0.01</Pos>
+  </Joint>
+  <Joint name="Joint2" type="Revolute">
+    <RPY> 0 90 0 </RPY>
+    <Pos> 0.11 -0.26 -0.63</Pos>
+  </Joint>
+  <Joint name="Joint3" type="Revolute">
+    <RPY> 0 0 0 </RPY>
+    <Pos> 0.68 0 0</Pos>
+  </Joint>
+  <Joint name="Joint4" type="Revolute">
+    <RPY> 0 90 0 </RPY>
+    <Pos> 0.48 -0.02 -0.13</Pos>
+  </Joint>
+  <Joint name="Joint5" type="Revolute">
+    <RPY> 0 90 0 </RPY>
+    <Pos> 0 0 0.19</Pos>
+  </Joint>
+  <Joint name="Joint6" type="Revolute">
+    <RPY> 0 -90 0 </RPY>
+    <Pos> -0.16 0 -0.02</Pos>
+  </Joint>
+
+  <PosLimit refjoint="Joint1" min="-185" max="185" />
+  <PosLimit refjoint="Joint2" min="-155" max="40" />
+  <PosLimit refjoint="Joint3" min="-154" max="130" />
+  <PosLimit refjoint="Joint4" min="-350" max="350" />
+  <PosLimit refjoint="Joint5" min="-130" max="130" />
+  <PosLimit refjoint="Joint6" min="-350" max="350" />
+
+  <Drawable name="BaseGeo" refframe="Base">
+    <RPY> 0 0 90 </RPY>
+    <Pos> 0 0 0</Pos>
+    <RGB>0.1 0.1 0.1 </RGB>
+    <Polytope file="Geometry/Base" scale="0.001"/>
+  </Drawable>
+
+  <Drawable name="Joint1Geo" refframe="Joint1">
+    <RPY> -90 0 180 </RPY>
+    <Pos> 0 0 -0.35</Pos>
+    <RGB>0.8 0.4 0.05 </RGB>
+    <Polytope file="Geometry/Joint1" scale="0.001"/>
+  </Drawable>
+
+  <Drawable name="Joint2Geo" refframe="Joint2">
+    <RPY> -90 0 0 </RPY>
+    <Pos> 0 0 0</Pos>
+    <RGB>0.8 0.4 0.05 </RGB>
+    <Polytope file="Geometry/Joint2" scale="0.001" />
+  </Drawable>
+  <Drawable name="Joint3Geo" refframe="Joint3">
+    <RPY> 0 0 0 </RPY>
+    <Pos> 0.3465 -0.022 -0.13</Pos>
+    <RGB>0.8 0.4 0.05 </RGB>
+    <Polytope file="Geometry/Joint3" scale="0.001"/>
+  </Drawable>
+  <Drawable name="Joint4Geo" refframe="Joint4">
+    <RPY> 90 0 180 </RPY>
+    <Pos> 0 0 0</Pos>
+    <RGB>0.8 0.4 0.05 </RGB>
+    <Polytope file="Geometry/Joint4" scale="0.001"/>
+  </Drawable>
+  <Drawable name="Joint5Geo" refframe="Joint5">
+    <RPY> 180 0 180 </RPY>
+    <Pos> 0 0 -0.07</Pos>
+    <RGB>0.8 0.4 0.05 </RGB>
+    <Polytope file="Geometry/Joint5" scale="0.001"/>
+  </Drawable>
+
+
+  <CollisionSetup file="CollisionSetup.prox.xml" />
+  <Q name="Home">0 0.611 -2.095 0 1.570 0</Q>
+
+</SerialDevice>

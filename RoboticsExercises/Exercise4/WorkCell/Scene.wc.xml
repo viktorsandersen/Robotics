@@ -1,0 +1,23 @@
+<WorkCell name="Scene">
+
+	<Frame name="Table" refframe="WORLD" type="Fixed">
+		<RPY>0 0 0</RPY>
+		<Pos>0 0 -1</Pos>
+		<Drawable name="TableGeo" refframe="Table" colmodel="Enabled">
+			<Pos>0 0 0</Pos>
+			<RPY>0 0 0</RPY>
+			<Box x="2" y="2" z="2"/>
+		</Drawable>
+	</Frame>
+
+	<Frame name="URReference" refframe="Table" type="Movable">
+		<RPY>0 0 0</RPY>
+		<Pos>0.5 0.5 1</Pos>
+	</Frame>
+	<Include file="UR5/UR5.wc.xml" />
+	<Frame name="GraspTCP" refframe="UR5.TCP" type="Fixed">
+		<RPY>0 0 0</RPY>
+		<Pos>0 0 0.15</Pos>
+	</Frame>
+
+</WorkCell>
